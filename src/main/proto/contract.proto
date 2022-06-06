@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.acme";
+option java_outer_classname = "ContractGrpcProto";
+
+package contract;
+
+service ContractGrpc {
+    rpc create (SaveContractRequest) returns (ContractReply) {}
+    rpc getSingle (GetContractRequest) returns (ContractReply) {}
+}
+
+message SaveContractRequest {
+    string description = 1;
+}
+
+message ContractReply {
+    int64 id = 1;
+    string description = 2;
+}
+
+message GetContractRequest {
+    int64 id = 1;
+}
